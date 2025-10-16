@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WESO MMUST CU - Western Outreach Christian Union</title>
+    <style>
+        /* Color Variables - Red and Blue as MAJOR colors */
+        :root {
+            --primary-red: #D42F2F;
+            --primary-blue: #2E54A3;
+            --dark-red: #B02020;
+            --dark-blue: #1E3A8A;
+            --light-red: #F8D7D7;
+            --light-blue: #E6EDF7;
+            --white: #FFFFFF;
+            --black: #333333;
+            --light-gray: #f8f9fa;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles - Red and Blue Dominant */
+        header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-red) 100%);
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary-blue);
+            border: 3px solid var(--white);
+            text-align: center;
+            padding: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .logo-main {
+            font-size: 1.8rem;
+            font-weight: 900;
+            line-height: 1;
+            color: var(--primary-blue);
+        }
+
+        .logo-tagline {
+            font-size: 0.7rem;
+            font-weight: 600;
+            line-height: 1;
+            margin-top: 2px;
+            color: var(--primary-red);
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--white);
+        }
+
+        .logo-text .subtitle {
+            font-size: 0.9rem;
+            color: var(--white);
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 2px solid transparent;
+        }
+
+        nav a:hover, nav a.active {
+            background: var(--white);
+            color: var(--primary-blue);
+            border-color: var(--white);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--white);
+        }
+
+        /* Hero Section - Red and Blue Dominant */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-red) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 180px 0 100px;
+            margin-top: 80px;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-blue);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid var(--white);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            background: transparent;
+            color: var(--white);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-alt {
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--light-red) 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            color: var(--primary-blue);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title .underline {
+            width: 80px;
+            height: 4px;
+            background: var(--primary-red);
+            margin: 0 auto;
+        }
+
+        /* Photo Placeholders */
+        .photo-placeholder {
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--light-red) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-weight: bold;
+            border: 2px dashed var(--primary-blue);
+        }
+
+        .photo-placeholder.large {
+            width: 100%;
+            height: 400px;
+            font-size: 1.5rem;
+        }
+
+        .photo-placeholder.medium {
+            width: 100%;
+            height: 250px;
+            font-size: 1.2rem;
+        }
+
+        .photo-placeholder.small {
+            width: 100%;
+            height: 200px;
+            font-size: 1rem;
+        }
+
+        .photo-placeholder.circle {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+
+        /* Doctrinal Basis - Red and Blue Cards */
+        .doctrinal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .doctrinal-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary-blue);
+            border-top: 2px solid var(--primary-red);
+        }
+
+        .doctrinal-item h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .verse {
+            color: var(--primary-red);
+            font-weight: bold;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Executive Committee - Red and Blue Cards */
+        .executive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .executive-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border-top: 4px solid var(--primary-red);
+            border-left: 2px solid var(--primary-blue);
+        }
+
+        .executive-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .executive-role {
+            color: var(--primary-red);
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .executive-duties {
+            text-align: left;
+            margin-top: 1rem;
+        }
+
+        .executive-duties ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .executive-duties li {
+            padding: 0.3rem 0;
+            border-bottom: 1px solid var(--light-blue);
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .executive-duties li:before {
+            content: "•";
+            color: var(--primary-blue);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Photo Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border: 2px solid var(--primary-blue);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            border-color: var(--primary-red);
+        }
+
+        /* Subcommittees - Red and Blue Cards */
+        .subcommittee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .subcommittee-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary-blue);
+            border-bottom: 2px solid var(--primary-red);
+        }
+
+        .subcommittee-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* Membership - Red and Blue Cards */
+        .membership-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .membership-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .membership-card.full {
+            border-top: 4px solid var(--primary-blue);
+            border-left: 2px solid var(--primary-blue);
+        }
+
+        .membership-card.associate {
+            border-top: 4px solid var(--primary-red);
+            border-left: 2px solid var(--primary-red);
+        }
+
+        /* Events Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            background: var(--white);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary-blue);
+            border-right: 2px solid var(--primary-red);
+        }
+
+        .timeline-date {
+            color: var(--primary-red);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--primary-red);
+        }
+
+        /* Footer - Red and Blue */
+        footer {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-red) 100%);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* Form Styling */
+        input, select, textarea {
+            padding: 12px;
+            border: 2px solid var(--primary-blue);
+            border-radius: 5px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-red);
+        }
+
+        button[type="submit"] {
+            background: var(--primary-blue);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background: var(--primary-red);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                display: none;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                padding: 150px 0 80px;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-img">
+                    <div class="logo-main">WESO</div>
+                    <div class="logo-tagline">HEAR AND PROCLAIM</div>
+                </div>
+                <div class="logo-text">
+                    <h1>WESO MMUST CU</h1>
+                    <div class="subtitle">Western Outreach Christian Union</div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#doctrine">Doctrine</a></li>
+                    <li><a href="#leadership">Leadership</a></li>
+                    <li><a href="#ministries">Ministries</a></li>
+                    <li><a href="#membership">Membership</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>WESO MMUST Christian Union</h2>
+            <p>"We exist to preach the gospel of salvation to the lost bringing up leaders cultivating zealous members fully equipped for mission work."</p>
+            <a href="#membership" class="cta-button">Join Our Fellowship</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>About WESO MMUST CU</h2>
+                <div class="underline"></div>
+            </div>
+            
+            <div class="photo-placeholder large">
+                [Photo: WESO MMUST CU Group Photo - Replace with actual image]
+            </div>
+            
+            <div class="doctrinal-grid" style="margin-top: 3rem;">
+                <div class="doctrinal-item">
+                    <h3>🎯 Our Vision</h3>
+                    <p>We exist to preach the gospel of salvation to the lost bringing up leaders cultivating zealous members fully equipped for mission work.</p>
+                </div>
+                <div class="doctrinal-item">
+                    <h3>🎯 Our Mission</h3>
+                    <p>To win souls and disciple every new convert to be a soul winner, equip leaders with relevant skills for service by training and transformation of the community in economic and social life through the word of God.</p>
+                </div>
+                <div class="doctrinal-item">
+                    <h3>📜 Our Objectives</h3>
+                    <ul>
+                        <li>Reach out with the gospel of Jesus Christ and bare witness in our personal lives</li>
+                        <li>Equip and nurture spiritual life of members through fellowship, studying of the holy scripture and prayers</li>
+                        <li>Bring up transformational servant leaders</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctrinal Basis -->
+    <section id="doctrine" class="section section-alt">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Doctrinal Basis</h2>
+                <div class="underline"></div>
+                <p>The fundamental truth of Christianity according to Titus 2:1</p>
+            </div>
+            <div class="doctrinal-grid">
+                <div class="doctrinal-item">
+                    <h3>1. The Trinity</h3>
+                    <p>The unity of the Father, the Son and the Holy Spirit in the God-head</p>
+                    <div class="verse">Matthew 3:16-17; John 16:12-15</div>
+                </div>
+                <div class="doctrinal-item">
+                    <h3>2. God's Sovereignty</h3>
+                    <p>The sovereignty of God in creation, revelation, redemption and final judgment</p>
+                    <div class="verse">Daniel 4:25; Revelation 4:11; Colossians 1:15-19</div>
+                </div>
+                <div class="doctrinal-item">
+                    <h3>3. Holy Scriptures</h3>
+                    <p>The divine inspiration and entire truthfulness of the Holy Scriptures</p>
+                    <div class="verse">II Timothy 3:16-17</div>
+                </div>
+                <div class="doctrinal-item">
+                    <h3>4. Universal Sinfulness</h3>
+                    <p>The universal sinfulness of all men since the fall</p>
+                    <div class="verse">Romans 3:23-24</div>
+                </div>
+                <div class="doctrinal-item">
+                    <h3>5. Redemption</h3>
+                    <p>Redemption from the guilt, penalty, dominion and pollution of sin solely through the Lord Jesus Christ</p>
+                    <div class="verse">John 3:16; Romans 10:9</div>
+                </div>
+                <div class="doctrinal-item">
+                    <h3>6. Resurrection</h3>
+                    <p>The bodily resurrection of the Lord Jesus Christ from the dead and His ascension</p>
+                    <div class="verse">Acts 2:31-33</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Executive Committee -->
+    <section id="leadership" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Executive Committee</h2>
+                <div class="underline"></div>
+                <p>12-member leadership team serving for one academic year term</p>
+            </div>
+            
+            <div class="photo-placeholder medium" style="margin-bottom: 3rem;">
+                [Photo: Executive Committee Group Photo - Replace with actual image]
+            </div>
+            
+            <div class="executive-grid">
+                <div class="executive-card">
+                    <div class="photo-placeholder circle" style="margin: 0 auto 1rem;">
+                        [Chairperson Photo]
+                    </div>
+                    <div class="executive-role">Chairperson</div>
+                    <div class="executive-duties">
+                        <ul>
+                            <li>Spokesperson and representative</li>
+                            <li>Presides over all meetings</li>
+                            <li>Coordinates Executive Committee work</li>
+                            <li>Represents in WESO Kenya RCC</li>
+                            <li>Fosters realization of Vision, Mission and Objectives</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="executive-card">
+                    <div class="photo-placeholder circle" style="margin: 0 auto 1rem;">
+                        [Vice Chairperson Photo]
+                    </div>
+                    <div class="executive-role">Vice Chairperson</div>
+                    <div class="executive-duties">
+                        <ul>
+                            <li>Performs Chairperson's duties when needed</li>
+                            <li>In charge of welfare subcommittee</li>
+                            <li>Caters for welfare of speakers</li>
+                            <li>Forms and coordinates families</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="executive-card">
+                    <div class="photo-placeholder circle" style="margin: 0 auto 1rem;">
+                        [Secretary Photo]
+                    </div>
+                    <div class="executive-role">Secretary</div>
+                    <div class="executive-duties">
+                        <ul>
+                            <li>Handles all correspondence</li>
+                            <li>Preserves all records and minutes</li>
+                            <li>Issues meeting notices</li>
+                            <li>In charge of mobilization teams</li>
+                            <li>Has knowledge of all speakers</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="executive-card">
+                    <div class="photo-placeholder circle" style="margin: 0 auto 1rem;">
+                        [Treasurer Photo]
+                    </div>
+                    <div class="executive-role">Treasurer</div>
+                    <div class="executive-duties">
+                        <ul>
+                            <li>Receives and disburses funds</li>
+                            <li>Keeps financial records</li>
+                            <li>Acts as financial advisor</li>
+                            <li>In charge of income generating projects</li>
+                            <li>Answerable on financial matters</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section-alt">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact WESO MMUST CU</h2>
+                <div class="underline"></div>
+                <p>Get in touch with us</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">@</div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>wesommust@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">W</div>
+                        <div>
+                            <h3>Website</h3>
+                            <p>www.mmustcu.org</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">F</div>
+                        <div>
+                            <h3>Follow Us</h3>
+                            <div class="social-links">
+                                <a href="#" class="social-link">FB</a>
+                                <a href="#" class="social-link">TW</a>
+                                <a href="#" class="social-link">IG</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Masinde Muliro University of Science and Technology<br>Kakamega, Kenya</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form style="display: grid; gap: 1rem;">
+                        <input type="text" placeholder="Your Name">
+                        <input type="email" placeholder="Your Email">
+                        <select>
+                            <option>Membership Inquiry</option>
+                            <option>Partnership</option>
+                            <option>Event Information</option>
+                            <option>Prayer Request</option>
+                            <option>Other</option>
+                        </select>
+                        <textarea placeholder="Your Message" rows="5"></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WESO MMUST CU</h3>
+                    <p>Western Outreach Masinde Muliro University of Science and Technology Christian Union - Preaching the gospel, discipling believers, transforming lives.</p>
+                    <div class="logo-img" style="width: 60px; height: 60px; margin-top: 1rem;">
+                        <div class="logo-main" style="font-size: 1.2rem;">WESO</div>
+                        <div class="logo-tagline" style="font-size: 0.5rem;">HEAR AND PROCLAIM</div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="#home" style="color: #fff; text-decoration: none;">Home</a></li>
+                        <li><a href="#about" style="color: #fff; text-decoration: none;">About</a></li>
+                        <li><a href="#doctrine" style="color: #fff; text-decoration: none;">Doctrinal Basis</a></li>
+                        <li><a href="#leadership" style="color: #fff; text-decoration: none;">Leadership</a></li>
+                        <li><a href="#contact" style="color: #fff; text-decoration: none;">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <p>Email: wesommust@gmail.com</p>
+                    <p>Website: www.mmustcu.org</p>
+                    <p>Facebook: WESO MMUST</p>
+                    <p>Twitter: @Mmustweso</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">FB</a>
+                        <a href="#" class="social-link">TW</a>
+                        <a href="#" class="social-link">IG</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WESO MMUST CU. All rights reserved. | See, Hear & Proclaim | Affiliated with WESO Kenya</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('nav ul');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Close mobile menu after click
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                }
+                
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple form handling
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
